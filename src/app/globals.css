@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-script: var(--font-great-vibes), "Great Vibes", cursive;
+  --font-serif-letter: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: #0b0206;
+  color: #fde7ef;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+/* bottom hint */
+.hint {
+  text-shadow:
+    0 0 12px rgba(255, 90, 150, 0.85),
+    0 0 28px rgba(255, 40, 110, 0.45);
+  animation:
+    hint-in 0.9s ease-out both,
+    hint-pulse 2.4s ease-in-out 0.9s infinite;
+}
+@keyframes hint-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+@keyframes hint-pulse {
+  50% {
+    opacity: 0.55;
+  }
+}
+
+/* loader */
+.loader-heart {
+  width: 34px;
+  height: 34px;
+  background: #ff3d74;
+  transform: rotate(45deg);
+  animation: beat 1s ease-in-out infinite;
+  box-shadow: 0 0 30px #ff3d74;
+}
+.loader-heart::before,
+.loader-heart::after {
+  content: "";
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: inherit;
+}
+.loader-heart::before {
+  left: -17px;
+}
+.loader-heart::after {
+  top: -17px;
+}
+@keyframes beat {
+  50% {
+    transform: rotate(45deg) scale(0.8);
+  }
+}
+
+/* letter */
+.letter-backdrop {
+  background: radial-gradient(ellipse at center, rgba(40, 5, 18, 0.55), rgba(5, 0, 3, 0.8));
+  backdrop-filter: blur(4px);
+  animation: fade-in 0.5s ease-out both;
+}
+.letter-paper {
+  background:
+    radial-gradient(ellipse at top, rgba(255, 255, 255, 0.9), transparent 60%),
+    linear-gradient(180deg, #fffaf2, #f8eedf);
+  border-radius: 6px;
+  border: 1px solid #ead7b0;
+  box-shadow:
+    0 0 0 6px rgba(255, 248, 235, 0.6),
+    0 0 0 7px #e2c88e,
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(255, 120, 170, 0.25);
+  animation: letter-in 0.8s cubic-bezier(0.2, 0.9, 0.25, 1.15) both;
+  scrollbar-width: thin;
+}
+@keyframes letter-in {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.85) rotateX(20deg);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+.corner {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border-color: #d9b25f;
+  border-style: solid;
+  border-width: 0;
+  pointer-events: none;
+}
+.corner-tl {
+  top: 10px;
+  left: 10px;
+  border-top-width: 2px;
+  border-left-width: 2px;
+  border-top-left-radius: 14px;
+}
+.corner-tr {
+  top: 10px;
+  right: 10px;
+  border-top-width: 2px;
+  border-right-width: 2px;
+  border-top-right-radius: 14px;
+}
+.corner-bl {
+  bottom: 10px;
+  left: 10px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+  border-bottom-left-radius: 14px;
+}
+.corner-br {
+  bottom: 10px;
+  right: 10px;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+  border-bottom-right-radius: 14px;
+}
+.wax-seal {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #e6394f, #a50e25 60%, #7a0718);
+  box-shadow:
+    0 6px 14px rgba(140, 10, 30, 0.45),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.35);
+}
+.type-caret {
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: -0.15em;
+  background: #c3112b;
+  animation: caret 0.8s steps(1) infinite;
+}
+@keyframes caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hint,
+  .letter-paper,
+  .letter-backdrop {
+    animation: none;
+  }
+}
